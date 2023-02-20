@@ -1,0 +1,33 @@
+<div id="resister" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Resister Yourself</h4>
+                <button data-bs-dismiss="modal" class="btn-close"></button>
+            </div>
+            <form action="/account/resister" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="" for="first_name">First Name:</label>
+                        <input class="form-control bg-light border border-1 border-dark" type="text" name="first_name" placeholder="First Name" id="">
+                        <label class="" for="last_name">Last Name:</label>
+                        <input class="form-control bg-light border border-1 border-dark" type="text" name="last_name" placeholder="Last Name" id="">
+                        <label class="" for="username">User Name:</label>
+                        <input class="form-control bg-light border border-1 border-dark" type="text" name="username" placeholder="User Name" id="">
+                        <label class="" for="">Email Id:</label>
+                        <input class="form-control bg-light border border-1 border-dark" type="email" name="email" placeholder="Email Id" id="">
+                        <label class="" for="">Password:</label>
+                        <input class="form-control bg-light border border-1 border-dark" type="password" name="password1" placeholder="Password" id="">
+                        <label class="" for="">Confirm Password:</label>
+                        <input class="form-control bg-light border border-1 border-dark" type="password" name="password2" placeholder="Confirm Password" id="">
+                    </div>
+                    <input type="checkbox" name="terms&conditions" id=""><label for="terms&conditions"> Terms & Conditions</label>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Sign Up" class="form-control btn btn-warning"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

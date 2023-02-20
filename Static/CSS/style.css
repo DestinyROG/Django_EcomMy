@@ -1,0 +1,19 @@
+/* body{
+    background-color: rgb(37, 36, 36);
+} */
+a{
+    text-decoration: none;
+}
+/* header{
+    background: url('http://source.unsplash.com/collection/190727/1600x900') ;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    height: 100%;
+} */
+#bbg{
+    position: absolute;
+    top: 74%;
+    z-index: 1;
+}
+

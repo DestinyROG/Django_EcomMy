@@ -1,0 +1,17 @@
+{% extends 'Store\base.html' %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div id="mycart" class="container">
+    {% for i in cart %}
+    <h1>Name:</h1>
+    <p>{{i.name}}</p>
+    <h1>Quantity:</h1>
+    <p>{{i.quantity}}</p>
+    <h1>Image:</h1>
+    <img src="{{i.product_image.url}}" alt="product_image">
+    {% endfor %}
+</div>
+{% else %}
+<h1>Login please</h1>
+{% endif %}
+{% endblock content %}
