@@ -23,7 +23,8 @@ class CartAdmin(admin.ModelAdmin):
     list_display=[
         'id',
         'name',
-        'quantity'
+        'quantity',
+        'user',
     ]
 
 @admin.register(Banner_image)

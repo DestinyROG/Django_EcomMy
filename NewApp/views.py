@@ -77,7 +77,7 @@ def Add_to_cart(request,cate,name,qty):
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 def Cartview(request):
-    cart=Cart.objects.all()
+    cart=Cart.objects.all().filter(user=request.user)
     context={
         'cart':cart,
     }
