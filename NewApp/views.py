@@ -57,6 +57,7 @@ def Add_to_cart(request,cate,name,qty):
     if len(cart)==0:
         add=Cart(category=prod.category,name=prod.name,product_image=prod.product_image,price=prod.selling_price,quantity=qty,user=request.user)
         add.save()
+        messages.info(request,'Product is added to cart')
     else:
         for i in cart:
             if i.name==prod.name and i.category==prod.category:
@@ -68,17 +69,37 @@ def Add_to_cart(request,cate,name,qty):
                 if i.name==prod.name and i.category==prod.category:
                     i.quantity+=qty
                     i.save()
+                    messages.info(request,'Product is added to cart')
         else:
             add=Cart(category=prod.category,name=prod.name,product_image=prod.product_image,price=prod.selling_price,quantity=qty,user=request.user)
             add.save()
-        
+            messages.info(request,'Product is added to cart')
     return redirect(f"/collections/{cate}")
 
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 def Cartview(request):
+    prod=Product.objects.all()
     cart=Cart.objects.all().filter(user=request.user)
+    product=[]
+    for i in cart:
+        product.append(Product.objects.all().get(name=i.name,category=i.category))                      
     context={
         'cart':cart,
+        'product':product,
     }
     return render(request,'Store\Layout\cart.html',context=context)
+
+def UpdateCart(request):
+    if request.method=="POST":
+        if Cart.objects.filter(id=int(request.POST['prod_id']),user=request.user):
+            cart=Cart.objects.all().get(id=int(request.POST['prod_id']),user=request.user)
+            cart.quantity=int(request.POST['qty'])
+            cart.save()
+            return render(request,'Store\Layout\cart.html')
+    return redirect('/')
+
+def Remove(request):
+    if request.method=="POST":
+        Cart.objects.filter(id=int(request.POST['prod_id']),user=request.user).delete()
+        return render(request,'Store\Layout\cart.html')

@@ -9,4 +9,6 @@ urlpatterns=[
     path('addToCart/<str:cate>/<str:name>/<int:qty>',views.Add_to_cart,name="addToCart"),
     path('cart',views.Cartview,name='cart'),
     path('accessdenied',views.Accessdenied,name='accessdenied'),
+    path('update-cart',views.UpdateCart,name='update-cart'),
+    path('remove',views.Remove,name='remove'),
 ]

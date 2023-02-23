@@ -2,7 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header"></div>
-            <div class="modal-body"></div>
+            <div class="modal-body">
+                <center>
+                    <h1>Hello, </h1><h1>{{request.user}}</h1>
+                </center>
+            </div>
             <div class="modal-footer">
                 <div class="row container-fluid d-flex">
                     <a href="{% url 'delete' %}" class="btn btn-danger form-control w-50 ">Delete</a>

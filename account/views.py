@@ -12,13 +12,14 @@ def Resister(request):
         username=request.POST['username']
         password1=request.POST['password1']
         password2=request.POST['password2']
-        print(first_name,last_name,email,username,password1,password2)
-        # mobile_number=request.POST['mobile_number']
         if password1==password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'This user name is taken.')
+                print('This username is taken.')
+                # messages.info(request,'This username is taken.')
+                
             else:
                 User.objects.create_user(username=username,email=email,password=password1,first_name=first_name,last_name=last_name)
+                # messages.info(request,'You resistered succesfully')
                 return redirect("/")
 
 
@@ -32,8 +33,8 @@ def Login(request):
             password=request.POST['password']
             user=authenticate(username=username,password=password)
             if user != None:
-                messages.info(request,'user exist')
                 login(request,user=user)
+                messages.info(request,'You Loged in succesfully')
                 return redirect("/")
             else:
                 messages.error(request,'user not exist')

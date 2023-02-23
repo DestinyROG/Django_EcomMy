@@ -16,6 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
         'id',
         'category',
         'name',
+        'product_image',
     ]
 
 @admin.register(Cart)

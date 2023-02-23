@@ -18,7 +18,9 @@
                     <a href="{% url 'productview' item.category item.name %}">
                         <div class="card-body">
                             <div class="category-image">
-                                <img class="w-100"  src="{{item.product_image.url}}" alt="Collection image">
+                                <img class="w-100"
+                                  height="260px"
+                                  src="{{item.product_image.url}}" alt="Collection image">
                             </div>
                             <h5 class="text-center" >{{item.name}}</h5>
                         </div>
